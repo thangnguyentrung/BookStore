@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+@{
+    ViewData["Title"] = "ListCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ListCategory</h1>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+            <h4>John's Blog</h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="~/Category/ListCategory">Home</a></li>
+                @foreach (var itemCate in ViewBag.lsCate)
+                {
+                    <li><a href="~/Category/ListCategory?typeCate=@itemCate.CategoryName&&name=@ViewBag.Search">@itemCate.CategoryName</a></li>
+                }
+            </ul><br>
+            <form method="post" action="~/Category/ListCategory">
+                <div class="input-group">
+                    <input type="text" name="name" class="form-control" placeholder="Search Blog..">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        <div class="container-fluid text-center bg-grey">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-body"><img src="@Url.Content("~/img/" + item.Image)" class="img-responsive" style="width:350px;height:300px" alt="Image"></div>
+                        <p><strong>@item.BookName</strong></p>
+                        <p><strong><a href="~/Category/Details?id=@item.BookId">Details</a></strong></p>
+                        <p><strong><a href="~/Cart/AddToCart?id=@item.BookId">ADD-Cart</a></strong></p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

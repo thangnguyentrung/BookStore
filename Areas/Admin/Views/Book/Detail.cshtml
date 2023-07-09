@@ -1,0 +1,44 @@
+﻿@model BookStore.Models.Book
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Detail</h1>
+<div class="row text-center">
+    <div class="col-sm-4">
+        <div class="thumbnail">
+            <input type="hidden" name="id" value="@Model.BookId" />
+            <img src="@Url.Content("~/img/" + Model.Image)" alt="" width="400" height="300" />
+            <p><strong>@Model.BookName</strong></p>
+            <table class="table">
+                <tbody>                  
+                    <tr class="success">
+                        <td>Description</td>
+                        <td>@Model.Description</td>                       
+                    </tr>
+                    <tr class="danger">
+                        <td>Price</td>
+                        <td>@Model.Price</td>
+                    </tr>
+                    <tr class="info">
+                        <td>Quantity</td>
+                        <td>@Model.Quantity</td>
+                    </tr>
+                    <tr class="warning">
+                        <td>DateTime</td>
+                        <td>@Model.DateTime</td>
+                    </tr>
+                    <tr class="danger">
+                        <td>Price</td>
+                        <td>@Model.Category.CategoryName</td>
+                    </tr>
+                    <tr class="info">
+                        <td>AuthorName</td>
+                        <td>@Model.Author.AuthorName</td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

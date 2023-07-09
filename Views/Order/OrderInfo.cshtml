@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BookStore.Models.Order>
+@{
+    ViewData["Title"] = "OrderInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>OrderInfo</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>BookName</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>TotalPrice</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Cart)
+        {
+            <tr>
+                <td>@item.BookName</td>
+                <td><img src="@Url.Content("~/img/" + item.Image)" alt="" width="100" height="80" /></td>
+                <td>@item.Book.Price</td>
+                <td>@item.Quantity</td>
+                <td>@item.TotalPrice</td>
+                <td>
+                    <a href="~/Cart/Delete?Id=@item.BookId">Delete</a> |
+                </td>
+            </tr>
+        }
+        <tr>
+            <td><a href="~/Category/ListCategory">Next Buy</a></td>
+            <td></td>
+            <th>IntoMoney:</th>
+            <td>@ViewBag.TotalQuantity</td>
+            <td>@ViewBag.TotalPrice  VNĐ</td>
+        </tr>
+    </tbody>
+</table>
+<form action="~/Order/OrderInfo" method="post">
+    <div class="form-group">
+        <label for="OrderName">OrderName</label>
+        <input type="text" class="form-control" name="OrderName">
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" name="Email">
+    </div>
+    <div class="form-group">
+        <label for="PhoneNumbers">PhoneNumbers</label>
+        <input type="number" class="form-control" name="PhoneNumbers">
+    </div>
+    <div class="form-group">
+        <label for="DeliveryAddress">DeliveryAddress</label>
+        <input type="text" class="form-control" name="DeliveryAddress">
+    </div>
+   
+    <button type="submit" class="btn btn-default">Payment Confirmation</button>
+</form>
+@{
+    var alertMessage = ViewBag.AlertMessage;
+}
+@if (!string.IsNullOrEmpty(alertMessage))
+{
+    <script>
+        alert('@alertMessage');
+    </script>
+}

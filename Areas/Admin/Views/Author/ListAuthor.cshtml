@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BookStore.Models.Author>
+@{
+    ViewData["Title"] = "ListAuthor";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ListAuthor</h1>
+
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <a href="~/Admin/Author/Create">Create</a>
+    <form class="form-inline" action="~/Admin/Author/ListAuthor?search=@ViewBag.Search" method="post">
+        <div class="form-group">
+            <label for="pwd">Search:</label>
+            <input type="text" class="form-control" name="search" placeholder="Search By Name">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>BookName</th>
+                <th>BirthDate</th>
+                <th>Nationality</th>
+                <th>Story</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AuthorName</td>
+                    <td>@item.BirthDate</td>
+                    <td>@item.Nationality</td>
+                    <td>@item.Story</td>
+                    <td>
+                        <a href="~/Admin/Author/Edit?Id=@item.AuthorId">Edit</a> |
+                        <a href="~/Admin/Author/Detail?Id=@item.AuthorId">Detail</a> |
+                        <a href="~/Admin/Author/Delete?Id=@item.AuthorId">Delete</a> |
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <a href="~/Admin/Author/ListAuthor?search=@ViewBag.Search&sortBy=AuthorName&sortType=@(ViewBag.SortType == "ASC" ? "DESC" : "ASC")">Sort</a>
+</div>

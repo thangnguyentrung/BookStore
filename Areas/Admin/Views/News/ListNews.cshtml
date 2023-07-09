@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookStore.Models.News>
+@{
+    ViewData["Title"] = "ListNews";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ListNews</h1>
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <a href="~/Admin/News/AddNews">AddNews</a> |
+    <form class="form-inline" action="~/Admin/News/ListNews?search=@ViewBag.Search" method="post">
+        <div class="form-group">
+            <label for="pwd">Search:</label>
+            <input type="text" class="form-control" name="search" placeholder="Search By Name">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NewsTitle)</th>
+                <th>@Html.DisplayNameFor(model => model.NewsContent)</th>
+                <th>@Html.DisplayNameFor(model => model.NewsImageUrl)</th>              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NewsTitle</td>
+                    <td>@item.NewsContent</td>
+                    <td><img src="@Url.Content("~/img/" + item.NewsImageUrl)" alt="" width="100" height="80" /></td>
+                    <td> <a href="~/Admin/News/Delete?Id=@item.NewsId">Delete</a> |</td>
+                    <td> <a href="~/Admin/News/Edit?Id=@item.NewsId">Edit</a> |</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <a href="~/Admin/News/ListNews?search=@ViewBag.Search&sortBy=NewsTitle&sortType=@(ViewBag.SortType == "ASC" ? "DESC" : "ASC")">Sort</a>
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BookStore.Models.Order>
+@{
+    ViewData["Title"] = "ListOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ListOrder</h1>
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <a href="~/Admin/Order/Create">Create</a>
+    <form class="form-inline" action="~/Admin/Order/ListOrder?search=@ViewBag.Search" method="post">
+        <div class="form-group">
+            <label for="pwd">Search:</label>
+            <input type="text" class="form-control" name="search" placeholder="Search By Name">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>OrderName</th>
+                <th>Email</th>
+                <th>PhoneNumbers</th>
+                <th>DeliveryAddress</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.OrderName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumbers</td>
+                    <td>@item.DeliveryAddress</td>
+                    <td>
+                        <a href="~/Admin/Order/Edit?Id=@item.OrderId">Edit</a> |
+                        <a href="~/Admin/Order/Detail?Id=@item.OrderId">Detail</a> |
+                        <a href="~/Admin/Order/Delete?Id=@item.OrderId">Delete</a> |
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <a href="~/Admin/Order/ListOrder?search=@ViewBag.Search&sortBy=OrderName&sortType=@(ViewBag.SortType == "ASC" ? "DESC" : "ASC")">Sort</a>
+</div>

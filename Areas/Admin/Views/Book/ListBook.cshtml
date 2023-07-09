@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+@{
+    ViewData["Title"] = "ListBook";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ListBook</h1>
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <a href="~/Admin/Book/Create">Create</a>
+    <form class="form-inline" action="~/Admin/Book/ListBook?search=@ViewBag.Search" method="post">
+        <div class="form-group">
+            <label for="pwd">Search:</label>
+            <input type="text" class="form-control" name="search" placeholder="Search By Name">
+        </div>  
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>BookName</th>
+                <th>Description</th>
+                <th>DateTime</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>AuthorName</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.BookName</td>
+                    <td>@item.Description</td>
+                    <td>@item.DateTime</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td><img src="@Url.Content("~/img/" + item.Image)" alt="" width="100" height="80" /></td>
+                    <td>@item.Category.CategoryName</td>
+                    <td>@item.Author.AuthorName</td>
+                    <td>
+                        <a href="~/Admin/Book/Edit?Id=@item.BookId">Edit</a> |
+                        <a href="~/Admin/Book/Detail?Id=@item.BookId">Detail</a> |
+                        <a href="~/Admin/Book/Delete?Id=@item.BookId">Delete</a> |
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>  
+    <a href="~/Admin/Book/ListBook?search=@ViewBag.Search&sortBy=BookName&sortType=@(ViewBag.SortType == "ASC" ? "DESC" : "ASC")">Sort</a>
+</div>
+
+

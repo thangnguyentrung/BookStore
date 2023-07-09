@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BookStore.Models.Category>
+@{
+    ViewData["Title"] = "ListCatgegory";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>ListCatgegory</h1>
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <a href="~/Admin/Category/Create">Create</a>
+    <form class="form-inline" action="~/Admin/Category/ListCategory?search=@ViewBag.Search" method="post">
+        <div class="form-group">
+            <label for="pwd">Search:</label>
+            <input type="text" class="form-control" name="search" placeholder="Search By Name">
+        </div>  
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>BookName</th>             
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryName</td>             
+                    <td>
+                        <a href="~/Admin/Category/Edit?Id=@item.CategoryId">Edit</a> |
+                        <a href="~/Admin/Category/Detail?Id=@item.CategoryId">Detail</a> |
+                        <a href="~/Admin/Category/Delete?Id=@item.CategoryId">Delete</a> |
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>  
+    <a href="~/Admin/Category/ListCategory?search=@ViewBag.Search&sortBy=CategoryName&sortType=@(ViewBag.SortType == "ASC" ? "DESC" : "ASC")">Sort</a>
+</div>
+
+

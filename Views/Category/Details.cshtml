@@ -1,0 +1,44 @@
+﻿@model BookStore.Models.Book
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div class="col-sm-4">
+    <div class="panel panel-primary">
+        <input type="hidden" name="id" value="@Model.BookId" />
+        <div class="panel-body"><img src="@Url.Content("~/img/" + Model.Image)" class="img-responsive" style="width:350px;height:300px" alt="Image"></div>
+        <p style="text-align:center" ><strong>@Model.BookName</strong></p>
+        <table class="table">
+            <tbody>
+                <tr class="success">
+                    <td>Description</td>
+                    <td>@Model.Description</td>
+                </tr>
+                <tr class="danger">
+                    <td>Price</td>
+                    <td>@Model.Price</td>
+                </tr>
+                <tr class="info">
+                    <td>Quantity</td>
+                    <td>@Model.Quantity</td>
+                </tr>
+                <tr class="warning">
+                    <td>DateTime</td>
+                    <td>@Model.DateTime</td>
+                </tr>
+                <tr class="danger">
+                    <td>CategoryName</td>
+                    <td>@Model.Category.CategoryName</td>
+                </tr>
+                <tr class="info">
+                    <td>AuthorName</td>
+                    <td>@Model.Author.AuthorName</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="text-align:center"><strong><a href="~/Cart/AddToCart?id=@Model.BookId">ADD-Cart</a></strong></p>
+    </div>
+</div>

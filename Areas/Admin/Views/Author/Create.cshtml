@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+<p style="color:red">@ViewBag.Err</p>
+<form class="form-horizontal" method="post" action="~/Admin/Author/Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="AuthorName">AuthorName:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="AuthorName" placeholder="Enter AuthorName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="BirthDate">BirthDate:</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" name="BirthDate" placeholder="Enter BirthDate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Nationality">Nationality:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="Nationality" placeholder="Enter Nationality">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Story">Story:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="Story" placeholder="Enter Story">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+

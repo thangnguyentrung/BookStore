@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+<p style="color: red">@ViewBag.Err </p>
+<form class="form-horizontal" method="post" action="~/Admin/Cart/Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="BookName">BookName:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="BookName" placeholder="Enter BookName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="Image">Image:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" name="file"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="BookName">Quantity:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="Quantity" placeholder="Enter Quantity">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="BookName">TotalPrice:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="TotalPrice" placeholder="Enter TotalPrice">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="UserId">UserId:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="UserId" placeholder="Enter UserId">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="BookId">BookId:</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="BookId" placeholder="Enter BookId">
+        </div>
+    </div> 
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+</form>
+
+
+

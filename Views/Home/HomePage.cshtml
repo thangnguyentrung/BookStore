@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+@{
+    ViewData["Title"] = "HomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @for (var i = 0; i < ViewBag.LsNewsCarousel.Count; i++)
+        {
+            <li data-target="#myCarousel" data-slide-to="@i" class="@((i == 0) ? "active" : "")"></li>
+        }
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        @for (var i = 0; i < ViewBag.LsNewsCarousel.Count; i++)
+        {
+            var itemCaro = ViewBag.LsNewsCarousel[i];
+            <div class="item @(i == 0 ? "active" : "")">
+                <img src="@Url.Content("~/img/" + itemCaro.NewsImageUrl)" alt="" />
+            </div>
+        }
+    </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+ 
+<div class="container-fluid text-center bg-grey">
+    <h2>Outstanding</h2><br>
+    <h4>Let's buy a Book!</h4>
+    @foreach (var item in ViewBag.LsNewsOutStanding)
+    {
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                <div class="panel-body"><img src="@Url.Content("~/img/" + item.NewsImageUrl)" class="img-responsive" style="width:400px;height:350px" alt="Image"></div>              
+            </div>
+        </div>
+    }
+</div>
+
+
+<div class="container text-center">
+    <h3>RamdomBooks</h3>
+    <br>   
+        <div class="row">
+        @foreach (var item in ViewBag.RamdomBooks)
+        {
+            <div class="col-sm-2">
+                <img src="@Url.Content("~/img/" + item.Image)" class="img-responsive" style="width:150px;height:150px" alt="Image" />               
+                <p>@item.BookName</p>
+            </div>
+        }
+        </div> 
+</div>
+
+<div class="GoMap">
+    <h2 style="text-align: center">Location</h2><br>
+    <h4 style="text-align: center">Let's go to BookStore Now</h4>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.559710023461!2d105.77282177492732!3d20.97018948066453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313452d834ad5313%3A0xb133e7f71a348b8b!2zTmjDoCBzw6FjaCBLaW0gxJDhu5NuZw!5e0!3m2!1svi!2s!4v1687855846218!5m2!1svi!2s" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+        

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/site.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+   
+</head>
+<body>
+    <div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>@ViewBag.AdminName</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="~/Admin/Home/AdminPage">Home</a></li>
+        <li><a href="~/Admin/Book/ListBook">AddBook</a></li>
+        <li><a href="~/Admin/Category/ListCategory">AddCategory</a></li>
+        <li><a href="~/Admin/Author/ListAuthor">AddAuthor</a></li>
+        <li><a href="~/Admin/User/ListUser">AddUser</a></li>
+        <li><a href="~/Admin/News/ListNews">AddNews</a></li>
+        <li><a href="~/Admin/Cart/ListCart">AddCart</a></li>
+        <li><a href="~/Admin/Order/ListOrder">AddOrder</a></li>
+      </ul><br>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Blog..">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+      <ul class="nav nav-pills nav-stacked">
+         <li><a href="~/Admin/Admin/Logout">Logout</a></li>
+         <li><a href="~/Home/HomePage">Go to Web</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-9">
+         @RenderBody()
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Footer Text</p>
+</footer>
+</body>
+</html>
